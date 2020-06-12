@@ -9,8 +9,7 @@
             <select class="form-control" formControlName="filter" id="sel1">
                 <option value="repositories">Repository</option>
                 <option value = "users">User</option>
-                <option>3</option>
-                <option>4</option>
+
               </select>
         </div>
     <div class="col-3"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></div>
@@ -20,7 +19,7 @@
     
 <br> 
 
-<div class="row">
+<div *ngIf="this.length!=0" class="row">
 <table class="table">
     <thead>
       <tr>
@@ -33,7 +32,7 @@
     <tbody>
       <tr *ngFor = "let details of this.finalprod">
        
-        <td>{{details.login}} {{details.full_name}}</td>
+        <td (click) = gotoProfile(details.login,details.full_name)>{{details.login}} {{details.full_name}}</td>
         <td><a href ="{{details.html_url}}" target ="_blank">{{details.html_url}}</a> </td>
       </tr>
 
@@ -43,10 +42,10 @@
 
 <nav aria-label="Page navigation example">
     <ul class="pagination">
-      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li> -->
       <li *ngFor = "let number of this.pagesarray" class="page-item" (click)="setCurrentPage(number)"><a class="page-link" href="#">{{number}}</a></li>
       
-      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
     </ul>
   </nav>
 </div>

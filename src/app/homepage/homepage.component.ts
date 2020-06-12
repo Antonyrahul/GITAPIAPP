@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormControl, Validators} from'@angular/forms';
 import {ProductService} from '../product.service'
-
+import {ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -12,15 +12,15 @@ export class HomepageComponent implements OnInit {
   searchform;
   prod;
   finalprod = [];
-  length;
+  length=0;
   nopages;
   pagesarray =[];
   currentpage =1;
-    constructor(private productservice:ProductService) {
+    constructor(private productservice:ProductService,private router:Router) {
       this.searchform = new FormGroup({
         
         searchtext:new FormControl('',[Validators.required]),
-        filter:new FormControl('',[Validators.required])
+        filter:new FormControl('users',[Validators.required])
        
        
         
@@ -66,11 +66,16 @@ applyPage()
 {
  
   var start= this.currentpage*10-10;
-  
+  var end;
   if(this.pagesarray.includes(this.currentpage+1))
-  var end = start+10
+  end = start+10
   else
   {
+    if(this.length%10==0)
+    {
+      end = start+10
+    }
+    else
     end = start+this.length%10
   }
   console.log(start)
@@ -80,6 +85,13 @@ applyPage()
   {
     this.finalprod.push(this.prod[i])
   }
+
+}
+gotoProfile(user,repo)
+{
+ 
+  this.router.navigate(['/profile',user])
+  
 
 }
 

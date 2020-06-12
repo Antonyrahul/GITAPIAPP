@@ -1,0 +1,53 @@
+
+    <div class = "row">
+        <div class="col-4">
+    
+    <div class="profile-card-4 text-center"><img src={{this.prod.avatar_url}} class="img img-responsive">
+        <div class="profile-content">
+            <div class="profile-name">{{this.prod.name}}
+                <p>{{this.prod.login}}</p>
+            </div>
+            <div class="profile-description">{{this.prod.bio}}</div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="profile-overview">
+                        <p>FOLLOWERS</p>
+                        <h4>{{this.prod.followers}}</h4></div>
+                </div>
+                <div class="col-4">
+                    <div class="profile-overview">
+                        <p>FOLLOWING</p>
+                        <h4>{{this.prod.following}}</h4></div>
+                </div>
+                <div class="col-4">
+                    <div class="profile-overview">
+                        <p>REPOS</p>
+                        <h4>{{this.prod.public_repos}}</h4></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-8 repocol">
+    <h4>Repositories</h4>
+    
+    <input class="form-control mr-sm-2" type="search" id="myInput" (input)="myFunction()" placeholder="Search" formControlName="searchtext" aria-label="Search">
+    <ul class="list-group" id ="myUL">
+        <li *ngFor = "let details of this.finalprod" class="list-group-item"><a href="{{details.html_url}}" target="_blank">{{details.name}}</a></li>
+        <!-- <li class="list-group-item"><a href="#">Dapibus ac facilisis in</a></li>
+        <li class="list-group-item"><a href="#">Morbi leo risus</a></li>
+        <li class="list-group-item"><a href="#">Porta ac consectetur ac</a></li>
+        <li class="list-group-item"><a href="#">Vestibulum at eros</a></li> -->
+      </ul>
+</div>
+</div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li> -->
+      <li *ngFor = "let number of this.pagesarray" class="page-item" (click)="setCurrentPage(number)"><a class="page-link" >{{number}}</a></li>
+      
+      <!-- <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+    </ul>
+  </nav>
+
+

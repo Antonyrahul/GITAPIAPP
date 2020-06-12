@@ -25,4 +25,39 @@ export class ProductService {
     console.log(url)
     return this.http.get(url,requestOptions)
   }
+
+  getProfile(data):Observable<any>
+  {
+    var url;
+   
+    const headerDict = {
+      'Authorization':'token df0fe5915180585002dc4e11de069381ce2790f8'
+    }
+    
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders(headerDict), 
+    };
+    console.log(data)
+    url = "https://api.github.com/users/"+data;
+    console.log(url)
+    return this.http.get(url,requestOptions)
+
+  }
+  getRepos(data):Observable<any>
+  {
+    var url;
+   
+    const headerDict = {
+      'Authorization':'token df0fe5915180585002dc4e11de069381ce2790f8'
+    }
+    
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders(headerDict), 
+    };
+    console.log(data)
+    url = "https://api.github.com/users/"+data+"/repos";
+    console.log(url)
+    return this.http.get(url,requestOptions)
+
+  }
 }
