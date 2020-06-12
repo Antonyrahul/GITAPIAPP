@@ -1,0 +1,52 @@
+<div class="container-fluid no-padding">
+    <form  [formGroup]= "searchform" (submit)="processdata();">
+    <div class="row">
+       
+    <div class="col-6">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" formControlName="searchtext" aria-label="Search"></div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+        
+            <select class="form-control" formControlName="filter" id="sel1">
+                <option value="repositories">Repository</option>
+                <option value = "users">User</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+        </div>
+    <div class="col-3"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></div>
+
+</div>
+</form>
+    
+<br> 
+
+<div class="row">
+<table class="table">
+    <thead>
+      <tr>
+        
+        
+        <th scope="col">Name</th>
+        <th scope="col">Giturl</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let details of this.finalprod">
+       
+        <td>{{details.login}} {{details.full_name}}</td>
+        <td><a href ="{{details.html_url}}" target ="_blank">{{details.html_url}}</a> </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li *ngFor = "let number of this.pagesarray" class="page-item" (click)="setCurrentPage(number)"><a class="page-link" href="#">{{number}}</a></li>
+      
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+</div>
